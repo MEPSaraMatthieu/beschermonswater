@@ -1,1 +1,715 @@
 
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blijf van ons drinkwater af — Sara Matthieu</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #1a5c2a;
+    --green-mid: #2d8a45;
+    --green-light: #7ec8a0;
+    --mint: #b8e8cc;
+    --pink: #e8a0c8;
+    --pink-light: #f2c8e0;
+    --lime: #c8e820;
+    --white: #ffffff;
+    --off-white: #f8fdf9;
+    --text: #1a2e1f;
+    --text-light: #4a6452;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* LANG TOGGLE */
+  .lang-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 16px;
+    background: var(--white);
+    border-bottom: 1px solid var(--mint);
+  }
+  .lang-btn {
+    padding: 6px 18px;
+    border-radius: 20px;
+    border: 2px solid var(--green-dark);
+    background: transparent;
+    color: var(--green-dark);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+  .lang-btn.active {
+    background: var(--green-dark);
+    color: var(--white);
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--green-dark);
+    padding: 48px 24px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    background: var(--green-mid);
+    border-radius: 50%;
+    opacity: 0.3;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    background: var(--mint);
+    border-radius: 50%;
+    opacity: 0.15;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--pink);
+    color: var(--green-dark);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(34px, 9vw, 50px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero h1 span { color: var(--mint); }
+  .hero-sub {
+    font-size: 16px;
+    color: var(--mint);
+    line-height: 1.6;
+    max-width: 340px;
+    margin: 0 auto 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .deadline-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--pink);
+    color: var(--green-dark);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    position: relative;
+    z-index: 1;
+  }
+  .deadline-badge .dot {
+    width: 8px; height: 8px;
+    background: var(--green-dark);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  /* SARA */
+  .sara-block {
+    background: var(--white);
+    margin: 20px 16px;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 16px rgba(26,92,42,0.08);
+  }
+  .sara-avatar {
+    width: 56px; height: 56px;
+    background: var(--mint);
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+  }
+  .sara-block strong {
+    display: block;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .sara-block p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  /* SECTION HEADER */
+  .section {
+    padding: 24px 16px 0;
+  }
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    margin-bottom: 6px;
+  }
+  .section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--green-dark);
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  /* FACTS */
+  .facts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 16px 20px;
+  }
+  .fact-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 2px 12px rgba(26,92,42,0.07);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .fact-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .fact-icon.pink { background: var(--pink-light); }
+  .fact-icon.mint { background: var(--mint); }
+  .fact-icon.lime { background: #eef7b0; }
+  .fact-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--green-dark);
+    margin-bottom: 4px;
+  }
+  .fact-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+
+  /* EXPLAINER */
+  .explainer {
+    background: var(--green-dark);
+    margin: 0 16px 20px;
+    border-radius: 20px;
+    padding: 24px;
+  }
+  .explainer .section-label { color: var(--mint); }
+  .explainer h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 14px;
+  }
+  .explainer p {
+    font-size: 14px;
+    color: #c8e8d0;
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+  .explainer p:last-child { margin-bottom: 0; }
+  .explainer strong { color: var(--white); }
+
+  /* STEPS */
+  .steps-section { margin: 0 16px 20px; }
+  .steps-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    color: var(--green-dark);
+    margin-bottom: 6px;
+  }
+  .steps-section .intro-text {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+  .step {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 16px;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 34px; height: 34px;
+    background: var(--green-dark);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-content h4 { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+  .step-content p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+
+  /* TEMPLATES */
+  .templates-section { margin: 0 16px 20px; }
+  .templates-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    color: var(--green-dark);
+    margin-bottom: 6px;
+  }
+  .templates-section .intro-text {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .template-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .tab-btn {
+    padding: 7px 16px;
+    border-radius: 20px;
+    border: 2px solid var(--green-dark);
+    background: transparent;
+    color: var(--green-dark);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+  .tab-btn.active {
+    background: var(--green-dark);
+    color: var(--white);
+  }
+  .template-box {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(26,92,42,0.07);
+    display: none;
+  }
+  .template-box.active { display: block; }
+  .template-box p {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+  .copy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 13px;
+    background: var(--green-dark);
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+  .copy-btn:active { transform: scale(0.97); }
+  .copy-btn.copied { background: var(--green-mid); }
+
+  /* CTA */
+  .cta-section {
+    margin: 0 16px 16px;
+    background: var(--pink-light);
+    border-radius: 20px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    color: var(--green-dark);
+    margin-bottom: 8px;
+  }
+  .cta-section p {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .cta-btn {
+    display: block;
+    width: 100%;
+    padding: 17px;
+    background: var(--green-dark);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+    transition: transform 0.2s;
+  }
+  .cta-btn:active { transform: scale(0.97); }
+  .cta-btn.secondary {
+    background: transparent;
+    border: 2px solid var(--green-dark);
+    color: var(--green-dark);
+    font-size: 14px;
+    padding: 14px;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 20px 16px 40px;
+    font-size: 12px;
+    color: var(--text-light);
+  }
+  footer a { color: var(--green-mid); }
+
+  .nl-content, .en-content { display: none; }
+  .nl-content.visible, .en-content.visible { display: block; }
+</style>
+</head>
+<body>
+
+<!-- LANG TOGGLE -->
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('nl', this)">Nederlands</button>
+  <button class="lang-btn" onclick="setLang('en', this)">English</button>
+</div>
+
+<!-- ========== DUTCH ========== -->
+<div class="nl-content visible" id="nl">
+
+  <div class="hero">
+    <div class="hero-tag">💧 Doe mee</div>
+    <h1>Blijf van ons<br><span>drinkwater</span> af.</h1>
+    <p class="hero-sub">De Europese Commissie overweegt de wet die jouw water beschermt af te zwakken. Jij kan dat tegenhouden.</p>
+    <div class="deadline-badge">
+      <span class="dot"></span>
+      Deadline: 14 april 2026
+    </div>
+  </div>
+
+  <div class="sara-block">
+    <div class="sara-avatar">💚</div>
+    <div>
+      <strong>Sara Matthieu — Europees Parlementslid (Groen)</strong>
+      <p>Ik vecht in het Europees Parlement voor proper water voor iedereen. De Commissie heeft nog niet beslist. Maar de deadline nadert — en jouw stem telt.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">De feiten</div>
+    <h2>Waarom dit belangrijk is</h2>
+  </div>
+
+  <div class="facts-grid">
+    <div class="fact-card">
+      <div class="fact-icon pink">⚗️</div>
+      <div>
+        <h3>29%</h3>
+        <p>Slechts 29% van de Europese rivieren en waterlopen zijn in gezonde staat. De wet wordt al slecht nageleefd en amper gehandhaafd.</p>
+      </div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-icon mint">🤝</div>
+      <div>
+        <h3>108×</h3>
+        <p>Zo vaak ontmoette de mijnbouwlobby de Europese Commissie om aan te dringen op minder bescherming van ons water. Lobby bij de Milieucommissaris steeg met 220%.</p>
+      </div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-icon lime">📋</div>
+      <div>
+        <h3>2019</h3>
+        <p>Na een evaluatie van 2 jaar zei de Commissie dat dit een prima wet was. Twee maanden geleden werd ze zelfs nog geoptimaliseerd. En nu is de wet plots een probleem?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="explainer">
+    <div class="section-label">Wat er gaande is</div>
+    <h2>De mijnbouwlobby wil jouw waterbescherming afbreken</h2>
+    <p>De Kaderrichtlijn Water beschermt al <strong>25 jaar</strong> onze rivieren, meren en het grondwater van Europa. Ze is niet perfect — maar ze werkt.</p>
+    <p>De mijnbouwindustrie heeft de Commissie zwaar onder druk gezet om ze te herzien. De Commissie heeft nu een consultatie geopend — en op basis van die reacties zal ze beslissen of ze de wet al dan niet verzwakt.</p>
+    <p>Dat betekent: als genoeg mensen zich uitspreken, <strong>kunnen we de afzwakking tegenhouden</strong>. Maar dan moet het nu gebeuren. De deadline is volgende week dinsdag 14 april.</p>
+    <p>Lobbyisten beweren dat ze onze samenleving groener willen maken door meer grondstoffen op te graven. Maar je kan de ene milieucrisis niet oplossen door een andere te creëren. Het is de verantwoordelijkheid van mijnbouwbedrijven om te investeren in technologieën die schade voorkomen — niet om beschermingen af te bouwen.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Hoe reageren</div>
+  </div>
+  <div class="steps-section">
+    <h2>Zo laat jij jouw stem horen</h2>
+    <p class="intro-text">De consultatie duurt minder dan 5 minuten. Hier is hoe.</p>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Ga naar de consultatiepagina van de Commissie</h4>
+        <p>Of klik op de knop onderaan deze pagina.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Log in met EU Login</h4>
+        <p>Klik op "Geef feedback". Nog geen account? Aanmaken duurt minder dan een minuut.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Kopieer een van onze teksten hieronder</h4>
+        <p>Kies Tekst 1, 2 of 3 — kopieer en plak in het tekstveld. Pas gerust aan.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Verzend</h4>
+        <p>Klik op verzenden. Dat is alles.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Kant-en-klare teksten</div>
+  </div>
+  <div class="templates-section">
+    <h2>Kopieer en plak</h2>
+    <p class="intro-text">Kies een van de drie teksten, kopieer en plak in het formulier. Je mag ze ook aanpassen.</p>
+    <div class="template-tabs">
+      <button class="tab-btn active" onclick="showTab('nl', 1, this)">Tekst 1</button>
+      <button class="tab-btn" onclick="showTab('nl', 2, this)">Tekst 2</button>
+      <button class="tab-btn" onclick="showTab('nl', 3, this)">Tekst 3</button>
+    </div>
+    <div class="template-box active" id="nl-t1">
+      <p>De Kaderrichtlijn Water beschermt al 25 jaar onze rivieren, meren en het grondwater van Europa. Slechts 29% van de Europese rivieren, meren en waterlopen is vandaag gezond. Het probleem is niet dat deze wet te streng is want ze wordt amper nageleefd en gehandhaafd. Een verzwakking lost geen enkel probleem op, maar creëert nieuwe: meer vervuiling, meer risico's voor jouw gezondheid en de natuur, en minder vertrouwen in Europese instellingen. Ik roep de Commissie op om de Kaderrichtlijn Water niet te herzien of te verzwakken, maar haar volledige implementatie en handhaving te versterken. Proper water is geen luxe — het is een mensenrecht.</p>
+      <button class="copy-btn" onclick="copyText(this, 'nl-t1')">📋 Kopieer tekst</button>
+    </div>
+    <div class="template-box" id="nl-t2">
+      <p>Ik spreek me duidelijk uit tegen elke herziening van de Kaderrichtlijn Water ten gunste van de mijnbouwindustrie. De mijnbouwindustrie had 108 ontmoetingen met de Europese Commissie — lobbymeetings met de Commissie stegen met 220%. Er is geen enkel bewijs dat de Kaderrichtlijn Water nieuwe mijnbouwprojecten significant hindert. Een herziening is dus niet gerechtvaardigd. De kosten van een verzwakking worden doorgeschoven naar de belastingbetaler en de natuur. Het is de verantwoordelijkheid van mijnbouwbedrijven om te investeren in technologieën die schade voorkomen. Ik vraag de Commissie om de wet niet te heropenen.</p>
+      <button class="copy-btn" onclick="copyText(this, 'nl-t2')">📋 Kopieer tekst</button>
+    </div>
+    <div class="template-box" id="nl-t3">
+      <p>Ik ben bezorgd over de mogelijke herziening van de Kaderrichtlijn Water. In 2019 concludeerde de Commissie na een evaluatie van twee jaar dat dit een prima wet was. Twee maanden geleden kreeg ze zelfs een update. Een nieuwe herziening — zonder bewijs dat de wet mijnbouwprojecten significant hindert, en zonder grondige impactanalyse — is voorbarig en ondermijnt het vertrouwen in de Europese instellingen. Proper water is de basis van onze gezondheid, onze voedselzekerheid en onze economie. Ik vraag de Commissie om de Kaderrichtlijn Water niet te heropenen, maar haar volledige implementatie en handhaving te bewerkstelligen.</p>
+      <button class="copy-btn" onclick="copyText(this, 'nl-t3')">📋 Kopieer tekst</button>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h2>De Commissie heeft nog niet beslist.</h2>
+    <p>Maar de deadline is 14 april 2026. Jouw reactie kan het verschil maken.</p>
+    <a class="cta-btn" href="https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/17034-Waterbeleid-van-de-EU-gerichte-herziening-van-de-kaderrichtlijn-water_nl" target="_blank">💧 Ga naar de consultatie</a>
+    <a class="cta-btn secondary" href="https://www.instagram.com/sara__matthieu/" target="_blank">Volg Sara op Instagram</a>
+  </div>
+
+</div>
+
+<!-- ========== ENGLISH ========== -->
+<div class="en-content" id="en">
+
+  <div class="hero">
+    <div class="hero-tag">💧 Take action</div>
+    <h1>Hands off<br><span>our water.</span></h1>
+    <p class="hero-sub">The European Commission is considering weakening the law that protects your water. You can stop it.</p>
+    <div class="deadline-badge">
+      <span class="dot"></span>
+      Deadline: 14 April 2026
+    </div>
+  </div>
+
+  <div class="sara-block">
+    <div class="sara-avatar">💚</div>
+    <div>
+      <strong>Sara Matthieu — MEP (Groen/Greens-EFA)</strong>
+      <p>I fight in the European Parliament for clean water for everyone. The Commission has not decided yet. But the deadline is approaching — and your voice counts.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">The facts</div>
+    <h2>Why this matters</h2>
+  </div>
+
+  <div class="facts-grid">
+    <div class="fact-card">
+      <div class="fact-icon pink">⚗️</div>
+      <div>
+        <h3>29%</h3>
+        <p>Only 29% of European rivers, lakes and waterways are in good health. The law is already not being enforced enough.</p>
+      </div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-icon mint">🤝</div>
+      <div>
+        <h3>108×</h3>
+        <p>That's how many times the mining lobby met the European Commission to push for weaker water rules. Lobbying with the Environment Commissioner increased by 220%.</p>
+      </div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-icon lime">📋</div>
+      <div>
+        <h3>2019</h3>
+        <p>After a two-year evaluation the Commission itself said this law was fit for purpose. Updated just two months ago. And now suddenly a problem?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="explainer">
+    <div class="section-label">What's happening</div>
+    <h2>The mining lobby wants to gut your water protection</h2>
+    <p>The Water Framework Directive has protected Europe's rivers, lakes and groundwater for <strong>25 years</strong>. It's not perfect — but it works.</p>
+    <p>The mining industry has put enormous pressure on the Commission to revise it. The Commission has now opened a consultation — and based on the responses, it will decide whether or not to weaken the law.</p>
+    <p>That means: if enough people speak up, <strong>this can be stopped</strong>. But it has to happen now. The deadline is 14 April.</p>
+    <p>They claim they want to make society greener by digging up more raw materials. But you cannot solve one environmental crisis by creating another. Mining companies must invest in cleaner technologies — not lobby to dismantle the protections that keep our water safe.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">How to respond</div>
+  </div>
+  <div class="steps-section">
+    <h2>Make your voice heard</h2>
+    <p class="intro-text">It takes less than 5 minutes. Here's how.</p>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Go to the consultation page</h4>
+        <p>Click the button at the bottom of this page or go to the official consultation page.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Log in with EU Login</h4>
+        <p>Click "Give feedback". No account? Creating one takes less than a minute.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Copy one of the texts below</h4>
+        <p>Choose Text 1, 2 or 3 — copy and paste into the form. Feel free to adapt it.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Submit</h4>
+        <p>Hit submit. That's it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Ready-made texts</div>
+  </div>
+  <div class="templates-section">
+    <h2>Copy and paste</h2>
+    <p class="intro-text">Choose one of the three texts, copy and paste into the form. Feel free to adapt it.</p>
+    <div class="template-tabs">
+      <button class="tab-btn active" onclick="showTab('en', 1, this)">Text 1</button>
+      <button class="tab-btn" onclick="showTab('en', 2, this)">Text 2</button>
+      <button class="tab-btn" onclick="showTab('en', 3, this)">Text 3</button>
+    </div>
+    <div class="template-box active" id="en-t1">
+      <p>The Water Framework Directive has protected Europe's rivers, lakes and groundwater for 25 years. Today, only 29% of European rivers, lakes and waterways are in good health. The problem is not that this law is too strict — it is already not being sufficiently implemented and enforced. Weakening the Directive will not solve any problem; it will create new ones: more pollution, more risks to public health and nature, and less trust in European institutions. I call on the Commission not to revise or weaken the Water Framework Directive, but to prioritise its full implementation and enforcement. Clean water is not a luxury — it is a human right.</p>
+      <button class="copy-btn" onclick="copyText(this, 'en-t1')">📋 Copy text</button>
+    </div>
+    <div class="template-box" id="en-t2">
+      <p>I am firmly opposed to any revision of the Water Framework Directive in favour of the mining industry. The mining industry held 108 meetings with the European Commission — lobbying with the Environment Commissioner increased by 220%. There is no evidence that the Water Framework Directive significantly hinders new mining projects. A revision is therefore not justified. The costs of weakening the law are passed on to taxpayers and nature. It is the responsibility of mining companies to invest in technologies that prevent harm. I urge the Commission not to reopen this law.</p>
+      <button class="copy-btn" onclick="copyText(this, 'en-t2')">📋 Copy text</button>
+    </div>
+    <div class="template-box" id="en-t3">
+      <p>I am concerned about the possible revision of the Water Framework Directive. In 2019, after a two-year evaluation, the Commission concluded this law was fit for purpose. Two months ago it was updated. A new revision — without evidence that the law significantly blocks mining projects, and without thorough impact assessment — is premature and undermines trust in European institutions. Clean water is the foundation of our health, our food security and our economy. I urge the Commission not to reopen the Water Framework Directive, but to prioritise its full implementation and enforcement.</p>
+      <button class="copy-btn" onclick="copyText(this, 'en-t3')">📋 Copy text</button>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h2>The Commission has not decided yet.</h2>
+    <p>But the deadline is 14 April 2026. Your response can make the difference.</p>
+    <a class="cta-btn" href="https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/17034-Waterbeleid-van-de-EU-gerichte-herziening-van-de-kaderrichtlijn-water_nl" target="_blank">💧 Go to the consultation</a>
+    <a class="cta-btn secondary" href="https://www.instagram.com/sara__matthieu/" target="_blank">Follow Sara on Instagram</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>Een initiatief van <a href="https://www.instagram.com/sara__matthieu/">Sara Matthieu</a>, Europees Parlementslid voor Groen/Greens-EFA</p>
+</footer>
+
+<script>
+  function setLang(lang, btn) {
+    document.querySelectorAll('.nl-content, .en-content').forEach(el => el.classList.remove('visible'));
+    document.getElementById(lang).classList.add('visible');
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  function showTab(lang, num, btn) {
+    const prefix = lang + '-t';
+    document.querySelectorAll('[id^="' + prefix + '"]').forEach(el => el.classList.remove('active'));
+    document.getElementById(prefix + num).classList.add('active');
+    btn.closest('.template-tabs').querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  function copyText(btn, id) {
+    const text = document.getElementById(id).querySelector('p').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const isNl = id.startsWith('nl');
+      btn.textContent = '✅ ' + (isNl ? 'Gekopieerd!' : 'Copied!');
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = '📋 ' + (isNl ? 'Kopieer tekst' : 'Copy text');
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+</script>
+</body>
+</html>
